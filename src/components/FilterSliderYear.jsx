@@ -15,51 +15,43 @@ class FilterSliderYear extends React.Component {
   }
 
   getYear = (time) => {
-      
-      if(time=="")
-      {
-          
-          time="2020-06-06"
-      }
+    if (time == "") {
+      time = "2020-06-06";
+    }
     return time.split("").splice(0, 4).join("");
   };
 
   FilterByYear = async (value) => {
     console.log(value);
-    console.log()
+    console.log();
 
     try {
       let APIkey = process.env.REACT_APP_APIKEY;
-    
+
       let numPage = this.context.page[0];
       let filterType = this.context.filterType[0];
-      let currentGenres=this.context.currentGenres[0]
-    
+      let currentGenres = this.context.currentGenres[0];
+
       let url = "";
       let result = {};
-      if (filterType === null && currentGenres!==null) {
+      if (filterType === null && currentGenres !== null) {
         url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${APIkey}&language=en-US&page=${numPage}&with_genres=${currentGenres}`;
-      } else if(filterType!==null) {
+      } else if (filterType !== null) {
         url = `https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&language=en-US&sort_by=${filterType}&include_adult=true&include_video=false&page=${numPage}`;
+      } else {
+        url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${APIkey}&language=en-US&page=${numPage}`;
       }
-      else
-      {
-          url=`https://api.themoviedb.org/3/movie/now_playing?api_key=${APIkey}&language=en-US&page=${numPage}`
-      }
-  
-     
+
       result = await Axios.get(url);
-      
-      
-     
+
       let filteredArray = result.data.results.filter(
-        a =>
+        (a) =>
           this.getYear(a.release_date) >= this.state.value.min &&
           this.getYear(a.release_date) <= this.state.value.max
       );
-      console.log(filteredArray)
-      this.context.movie[1](filteredArray)
-    
+      console.log(filteredArray);
+      this.context.movie[1](filteredArray);
+
       // window.scrollTo(0, 550);
     } catch (error) {
       console.log(error);

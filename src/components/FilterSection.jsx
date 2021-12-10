@@ -8,20 +8,17 @@ export default function FilterSection() {
 
   return (
     <>
-      <div
-        className={close ? "sort-section closed" : "sort-section"}
-        
-      >
+      <div className={close ? "sort-section closed" : "sort-section"}>
         <div className="name">
           <h2>Filter</h2>
           <span>
-            <i class="fas fa-arrow-right" onClick={()=>setClose(!close)} ></i>
+            <i class="fas fa-arrow-right" onClick={() => setClose(!close)}></i>
           </span>
         </div>
         <div className="filter">
-        <FilterSliderYear></FilterSliderYear>
-        <FilterSliderScore></FilterSliderScore>
-        <Category></Category>
+          <FilterSliderYear></FilterSliderYear>
+          <FilterSliderScore></FilterSliderScore>
+          <Category></Category>
         </div>
       </div>
     </>

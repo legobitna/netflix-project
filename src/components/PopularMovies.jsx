@@ -13,9 +13,9 @@ export default function PopularMovies() {
   React.useEffect(() => {
     getTopMovieAPI();
 
-    const handleResize=()=> {
+    const handleResize = () => {
       calculateSize(window.innerWidth);
-    }
+    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -36,8 +36,8 @@ export default function PopularMovies() {
       size = 1;
     } else if (width < 700) {
       size = 2;
-    }else if(width<1250){
-      size=3
+    } else if (width < 1250) {
+      size = 3;
     }
     let arrayOfArrays = [];
     for (let i = 0; i < data.results.length; i += size) {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { StoreContext } from "./../ThemeContext";
 import Moment from "react-moment";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Loading from "./Loading";
 
 export default function SingleMovie({ movie }) {
@@ -43,7 +43,7 @@ export default function SingleMovie({ movie }) {
                 <h4>
                   <Moment format="YYYY">{movie.release_date}</Moment>
                 </h4>
-               
+
                 <ul className="type">
                   {showGen(movie.genre_ids).map((genres) => {
                     return <li>{genres}</li>;
@@ -51,7 +51,9 @@ export default function SingleMovie({ movie }) {
                 </ul>
               </div>
               <div className="movie_desc">
-                <p className="text">{movie.overview.substring(0,200)+"..."}</p>
+                <p className="text">
+                  {movie.overview.substring(0, 200) + "..."}
+                </p>
               </div>
               <div className="movie_social">
                 <ul>

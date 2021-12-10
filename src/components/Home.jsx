@@ -14,9 +14,8 @@ export default function Home() {
         <PopularMovies></PopularMovies>
         <TopRatedMovies></TopRatedMovies>
         <UpComingMovies></UpComingMovies>
-        <div className="movie-sidebar-wrapper" style={{display:"none"}}>
+        <div className="movie-sidebar-wrapper" style={{ display: "none" }}>
           <SideBar></SideBar>
-          
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 import { StoreContext } from "./../ThemeContext";
-import {Link} from 'react-router-dom'
-import Loading from './Loading'
+import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 export default function SingleCardSlider({ movie }) {
   let { category } = React.useContext(StoreContext);
@@ -20,9 +20,10 @@ export default function SingleCardSlider({ movie }) {
   return (
     <>
       {category[0] === null ? (
-       <Loading></Loading>
+        <Loading></Loading>
       ) : (
-        <Link to={`/movie/${movie.id}`}
+        <Link
+          to={`/movie/${movie.id}`}
           className="card"
           style={{
             backgroundImage:
@@ -44,33 +45,32 @@ export default function SingleCardSlider({ movie }) {
               })}
             </ul>
 
-            <div className="movie_social_details" style={{marginLeft:"10px"}}>
-                      <ul>
-                        <li>
-                          <i className="fab fa-imdb imb-icon">
-                            <span className="imb-score">
-                              {movie.vote_average}
-                            </span>
-                          </i>
-                        </li>
-                        <li>
-                          <i className="fas fa-users users-icon">
-                            <span className="imb-score">
-                              {movie.popularity}
-                            </span>
-                          </i>
-                        </li>
-                        <li>
-                          <i className="material-icons">
-                            {movie.adult ? (
-                              <span className="eightteen">18+</span>
-                            ) : (
-                              <span className="eightteen">Under 18</span>
-                            )}
-                          </i>
-                        </li>
-                      </ul>
-                    </div>
+            <div
+              className="movie_social_details"
+              style={{ marginLeft: "10px" }}
+            >
+              <ul>
+                <li>
+                  <i className="fab fa-imdb imb-icon">
+                    <span className="imb-score">{movie.vote_average}</span>
+                  </i>
+                </li>
+                <li>
+                  <i className="fas fa-users users-icon">
+                    <span className="imb-score">{movie.popularity}</span>
+                  </i>
+                </li>
+                <li>
+                  <i className="material-icons">
+                    {movie.adult ? (
+                      <span className="eightteen">18+</span>
+                    ) : (
+                      <span className="eightteen">Under 18</span>
+                    )}
+                  </i>
+                </li>
+              </ul>
+            </div>
           </div>
         </Link>
       )}

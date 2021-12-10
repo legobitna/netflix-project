@@ -9,9 +9,9 @@ export default function TopRatedMovies() {
   let data = [];
   React.useEffect(() => {
     getTopRatedMovieAPI();
-    const handleResize=()=> {
+    const handleResize = () => {
       calculateSize(window.innerWidth);
-    }
+    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -36,8 +36,8 @@ export default function TopRatedMovies() {
       size = 1;
     } else if (width < 700) {
       size = 2;
-    }else if(width<1250){
-      size=3
+    } else if (width < 1250) {
+      size = 3;
     }
     let arrayOfArrays = [];
     for (let i = 0; i < data.results.length; i += size) {
@@ -51,22 +51,22 @@ export default function TopRatedMovies() {
         <div>Loading</div>
       ) : (
         <>
-        <h1 className="title">Top Rated Movies</h1>
-        <Carousel>
-          {topMovie.map((array) => {
-            return (
-              
+          <h1 className="title">Top Rated Movies</h1>
+          <Carousel>
+            {topMovie.map((array) => {
+              return (
                 <Carousel.Item>
                   <div className="each-slider">
-                  {array.map((movie) => {
-                    return <SingleCardSlider movie={movie}></SingleCardSlider>;
-                  })}
-                    </div>
+                    {array.map((movie) => {
+                      return (
+                        <SingleCardSlider movie={movie}></SingleCardSlider>
+                      );
+                    })}
+                  </div>
                 </Carousel.Item>
-            
-            );
-          })}
-        </Carousel>
+              );
+            })}
+          </Carousel>
         </>
       )}
     </>

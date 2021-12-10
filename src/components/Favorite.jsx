@@ -17,17 +17,12 @@ function Favorite() {
     currentGenres,
     filterType,
     originalMovie,
-    favorite
+    favorite,
   } = useContext(StoreContext);
 
   useEffect(() => {
-    
-   
     return () => {};
   }, []);
-
-  
-  
 
   return (
     <Fragment>
@@ -48,7 +43,7 @@ function Favorite() {
                 theme="square-fill"
               />
             </div> */}
-             <h1 style={{color:"white"}}>upcoming Feature</h1>
+            <h1 style={{ color: "white" }}>upcoming Feature</h1>
             <div className="movie-section">
               {favorite[0].map((movie) => {
                 return <SingleMovie movie={movie} key={movie.id}></SingleMovie>;
