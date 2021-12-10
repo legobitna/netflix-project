@@ -18,7 +18,7 @@ export default function Category(props) {
     category[1](data);
   }
 
-  console.log(category[0]);
+  
   return (
     <>
       <div className="category-section-wrapper">

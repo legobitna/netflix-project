@@ -22,8 +22,7 @@ class FilterSliderYear extends React.Component {
   };
 
   FilterByYear = async (value) => {
-    console.log(value);
-    console.log();
+    
 
     try {
       let APIkey = process.env.REACT_APP_APIKEY;
@@ -49,12 +48,12 @@ class FilterSliderYear extends React.Component {
           this.getYear(a.release_date) >= this.state.value.min &&
           this.getYear(a.release_date) <= this.state.value.max
       );
-      console.log(filteredArray);
+      
       this.context.movie[1](filteredArray);
 
-      // window.scrollTo(0, 550);
+     
     } catch (error) {
-      console.log(error);
+      
     }
   };
   render() {

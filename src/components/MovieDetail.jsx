@@ -34,7 +34,7 @@ export default function MovieDetail({ match }) {
     getMovieReviewFromAPI(id);
     getMovieRelatedFromAPI(id);
     getTrailer(id);
-    console.log("ID is:", id);
+   
   }
   async function getMovieReviewFromAPI(id) {
     let APIkey = process.env.REACT_APP_APIKEY;
@@ -54,18 +54,18 @@ export default function MovieDetail({ match }) {
     let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${APIkey}&language=en-US`;
     let res = await Axios.get(url);
     setTrailer(res.data.results[0]);
-    console.log("Trailer:", res.data.results[0]);
+    
   }
 
   function addToFavorite(movie) {
     favorite[1]([...favorite[0], movie]);
-    console.log(movie);
+   
   }
 
   function removeFromFavorite(id) {
     let newArray = [...favorite[0]];
     let index = newArray.findIndex((elm) => elm === id);
-    console.log(index);
+   
     if (index !== -1) {
       newArray.splice(index, 1);
       favorite[1](newArray);
@@ -75,7 +75,7 @@ export default function MovieDetail({ match }) {
     setModalOpen(false);
   }
 
-  console.log("related", movieRelated);
+  
 
   return (
     <>
