@@ -1,0 +1,1 @@
+CI=true npm run build
