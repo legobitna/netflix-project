@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import {Row, Col} from "react-bootstrap"
 import axios from "axios";
 import SingleMovie from "./SingleMovie";
 import { StoreContext } from "./../ThemeContext";
@@ -37,9 +38,7 @@ function MovieList() {
       url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${APIkey}&language=en-US&page=${numPage}`;
     }
 
-    console.log(filterType[0], "???????????????????");
-    console.log(currentGenres[0], "!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log(url, "this is URL");
+   
     let res = await axios.get(url);
     movie[1](res.data.results);
     originalMovie[1](res.data.results);
@@ -50,9 +49,7 @@ function MovieList() {
 
     getDataFromAPI(numPage);
 
-    // props.getProductListBySearch(numPage)
-    //fetch a data
-    //or update a query to get data
+    
   };
   
 
@@ -65,6 +62,16 @@ function MovieList() {
           </>
         ) : (
           <>
+           
+
+            <div className="movie-section">
+              <Row>
+                {movie[0].map((movie) => {
+                return <Col lg={6}><SingleMovie movie={movie} key={movie.id}></SingleMovie></Col>;
+              })}
+              </Row>
+              
+            </div>
             <div className="Pagination">
               
 
@@ -74,12 +81,6 @@ function MovieList() {
                 changeCurrentPage={changePage}
                 theme="square-fill"
               />
-            </div>
-
-            <div className="movie-section">
-              {movie[0].map((movie) => {
-                return <SingleMovie movie={movie} key={movie.id}></SingleMovie>;
-              })}
             </div>
           </>
         )}

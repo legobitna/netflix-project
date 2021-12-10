@@ -6,10 +6,16 @@ import SingleCardSlider from "./SingleCardSlider";
 
 export default function TopRatedMovies() {
   const [topMovie, setTopMovie] = React.useState(null);
-
+  let data = [];
   React.useEffect(() => {
     getTopRatedMovieAPI();
-    return () => {};
+    const handleResize=()=> {
+      calculateSize(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   async function getTopRatedMovieAPI() {
@@ -21,9 +27,24 @@ export default function TopRatedMovies() {
     for (var i = 0; i < res.data.results.length; i += size) {
       arrayOfArrays.push(res.data.results.slice(i, i + size));
     }
-    setTopMovie(arrayOfArrays);
+    data = res.data;
+    calculateSize(window.innerWidth);
   }
-  console.log(topMovie);
+  const calculateSize = (width) => {
+    let size = 5;
+    if (width < 500) {
+      size = 1;
+    } else if (width < 700) {
+      size = 2;
+    }else if(width<1250){
+      size=3
+    }
+    let arrayOfArrays = [];
+    for (let i = 0; i < data.results.length; i += size) {
+      arrayOfArrays.push(data.results.slice(i, i + size));
+    }
+    setTopMovie(arrayOfArrays);
+  };
   return (
     <>
       {topMovie === null ? (

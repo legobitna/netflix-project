@@ -46,14 +46,16 @@ function FilterDropDown(props) {
         <>
             <div className="filter-by-dropdown">
                 <h4>Sort Results By </h4>
-                <FormControl className={classes.formControl}>
+                <FormControl className={classes.formControl} >
+                <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
                     <Select
                         labelId="demo-controlled-open-select-label"
                         id="demo-controlled-open-select"
                         value={filterType[0]}
                         onChange={handleChange}
+                       
                     >
-                        <MenuItem value="">
+                        <MenuItem value="none">
                             <em>None</em>
                         </MenuItem>
                         <MenuItem value={"popularity.desc"}>Popularity(Desc)</MenuItem>

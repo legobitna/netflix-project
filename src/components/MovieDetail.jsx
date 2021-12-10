@@ -72,16 +72,13 @@ export default function MovieDetail({ match }) {
     }
 
 
-    // favorite[1](newArray1)
-
-
   }
   function closeModal() {
     setModalOpen(false)
   }
 
-  console.log(movieRelated);
-  console.log(favorite[0])
+  console.log("related",movieRelated);
+  
 
   return (
     <>
@@ -311,36 +308,34 @@ export default function MovieDetail({ match }) {
                         role="tablist"
                       >
                         <li className="nav-item">
-                          <a
+                          <button
                             onClick={() => setReviewActive(!reviewActive)}
                             className={
                               reviewActive ? "nav-link active" : "nav-link"
                             }
-                            id="profile-tab6"
+                          
                             data-toggle="tab"
-                            href="#profile6"
+                           
                             role="tab"
-                            aria-controls="profile"
-                            aria-selected="false"
+                           
                           >
                             Reviews ({movieReview.results.length})
-                        </a>
+                        </button>
                         </li>
                         <li className="nav-item">
-                          <a
+                          <button
                             onClick={() => setReviewActive(!reviewActive)}
                             className={
                               reviewActive ? "nav-link" : "nav-link active"
                             }
-                            id="profile-tab6"
+                            
                             data-toggle="tab"
-                            href="#profile6"
+                          
                             role="tab"
-                            aria-controls="profile"
-                            aria-selected="false"
+                           
                           >
-                            Related Movies ({movieReview.results.length})
-                        </a>
+                            Related Movies ({movieRelated.length})
+                        </button>
                         </li>
                       </ul>
                       <div className="tab-content" id="myTabContent2">
@@ -374,56 +369,7 @@ export default function MovieDetail({ match }) {
                                 );
                               })}
                             </div>
-                            <div className="review-box mt-50">
-                              <h4>Add a Review</h4>
-                              <div className="your-rating mb-40">
-                                <span>Your Rating:</span>
-                                <div className="rating-list">
-                                  <a href="#">
-                                    <i className="far fa-star" />
-                                  </a>
-                                  <a href="#">
-                                    <i className="far fa-star" />
-                                  </a>
-                                  <a href="#">
-                                    <i className="far fa-star" />
-                                  </a>
-                                  <a href="#">
-                                    <i className="far fa-star" />
-                                  </a>
-                                  <a href="#">
-                                    <i className="far fa-star" />
-                                  </a>
-                                </div>
-                              </div>
-                              <form className="review-form" action="#">
-                                <div className="row">
-                                  <div className="col-xl-12">
-                                    <label htmlFor="message">YOUR REVIEW</label>
-                                    <textarea
-                                      name="message"
-                                      id="message"
-                                      cols={30}
-                                      rows={10}
-                                      defaultValue={""}
-                                    />
-                                  </div>
-                                  <div className="col-xl-6">
-                                    <label htmlFor="r-name">Name</label>
-                                    <input type="text" id="r-name" />
-                                  </div>
-                                  <div className="col-xl-6">
-                                    <label htmlFor="r-email">Email</label>
-                                    <input type="email" id="r-email" />
-                                  </div>
-                                  <div className="col-xl-12">
-                                    <button className="btn theme-btn">
-                                      Add your Review
-                                  </button>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
+                            
                           </div>
                         </div>
                         <div

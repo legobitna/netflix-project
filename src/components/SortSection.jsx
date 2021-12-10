@@ -8,12 +8,11 @@ export default function SortSection() {
     <>
       <div
         className={close ? "sort-section closed" : "sort-section"}
-        onClick={a=>setClose(!close)}
       >
         <div className="name">
           <h2>Sort</h2>
           <span>
-            <i class="fas fa-arrow-right"></i>
+            <i class="fas fa-arrow-right" onClick={a=>setClose(!close)}></i>
           </span>
         </div>
         <div className="filter">

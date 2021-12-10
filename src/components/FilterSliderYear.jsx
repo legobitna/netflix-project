@@ -10,15 +10,15 @@ class FilterSliderYear extends React.Component {
     super(props);
 
     this.state = {
-      value: { min: 1990, max: 2020 },
+      value: { min: 1990, max: 2021 },
     };
   }
 
   getYear = (time) => {
-      console.log(time,"time hereeeeeeeeeeeeeee")
+      
       if(time=="")
       {
-          console.log("bi undefine ???")
+          
           time="2020-06-06"
       }
     return time.split("").splice(0, 4).join("");
@@ -30,11 +30,11 @@ class FilterSliderYear extends React.Component {
 
     try {
       let APIkey = process.env.REACT_APP_APIKEY;
-      // let key_word = this.props.metadata.key_word;
+    
       let numPage = this.context.page[0];
       let filterType = this.context.filterType[0];
       let currentGenres=this.context.currentGenres[0]
-      // console.log(page_num)
+    
       let url = "";
       let result = {};
       if (filterType === null && currentGenres!==null) {
@@ -49,9 +49,8 @@ class FilterSliderYear extends React.Component {
   
      
       result = await Axios.get(url);
-      console.log(url, "url");
-      console.log(result.data);
-      console.log(result.data.results.map(a=>(a.release_date)))
+      
+      
      
       let filteredArray = result.data.results.filter(
         a =>
@@ -77,7 +76,7 @@ class FilterSliderYear extends React.Component {
           <span class="price-filer-fromTo-text">{this.state.value.max}</span>
         </p>
         <InputRange
-          maxValue={2020}
+          maxValue={2021}
           minValue={1990}
           value={this.state.value}
           onChange={(value) => {

@@ -38,7 +38,7 @@ function Favorite() {
           </>
         ) : (
           <>
-            <div className="Pagination">
+            {/* <div className="Pagination">
               
 
               <Pagination
@@ -47,8 +47,8 @@ function Favorite() {
                 changeCurrentPage={changePage}
                 theme="square-fill"
               />
-            </div>
-
+            </div> */}
+             <h1 style={{color:"white"}}>upcoming Feature</h1>
             <div className="movie-section">
               {favorite[0].map((movie) => {
                 return <SingleMovie movie={movie} key={movie.id}></SingleMovie>;

@@ -10,12 +10,12 @@ export default function FilterSection() {
     <>
       <div
         className={close ? "sort-section closed" : "sort-section"}
-        onClick={a=>setClose(!close)}
+        
       >
         <div className="name">
           <h2>Filter</h2>
           <span>
-            <i class="fas fa-arrow-right"></i>
+            <i class="fas fa-arrow-right" onClick={()=>setClose(!close)} ></i>
           </span>
         </div>
         <div className="filter">

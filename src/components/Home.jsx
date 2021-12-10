@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Banner></Banner>
-      <div className="my-container">
+      <div className="movie-container">
         <PopularMovies></PopularMovies>
         <TopRatedMovies></TopRatedMovies>
         <UpComingMovies></UpComingMovies>

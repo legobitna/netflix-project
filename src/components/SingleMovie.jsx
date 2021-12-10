@@ -43,7 +43,7 @@ export default function SingleMovie({ movie }) {
                 <h4>
                   <Moment format="YYYY">{movie.release_date}</Moment>
                 </h4>
-                {/* <span className="minutes">117 min</span> */}
+               
                 <ul className="type">
                   {showGen(movie.genre_ids).map((genres) => {
                     return <li>{genres}</li>;
@@ -51,7 +51,7 @@ export default function SingleMovie({ movie }) {
                 </ul>
               </div>
               <div className="movie_desc">
-                <p className="text">{movie.overview}</p>
+                <p className="text">{movie.overview.substring(0,200)+"..."}</p>
               </div>
               <div className="movie_social">
                 <ul>
