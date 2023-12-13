@@ -8,8 +8,11 @@ import SingleMovie from "./SingleMovie";
 import SingleCardSlider from "./SingleCardSlider";
 import ReactModal from "react-modal";
 import YouTube from "@u-wave/react-youtube";
+import Review from "./Review";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function MovieDetail({ match }) {
+export default function MovieDetail() {
+  const {id} = useParams()
   const [movieDetails, setMovieDetails] = React.useState(null);
   const [movieReview, setMovieReview] = React.useState(null);
   const [movieRelated, setMovieRelated] = React.useState(null);
@@ -21,10 +24,11 @@ export default function MovieDetail({ match }) {
   const [trailer, setTrailer] = React.useState(null);
 
   React.useEffect(() => {
-    getMovieDetailsFromAPI(match.params.id);
+    getMovieDetailsFromAPI(id);
+    window.scrollTo({top:0,left:0,behavior:'smooth'})
 
     return () => {};
-  }, []);
+  }, [id]);
 
   async function getMovieDetailsFromAPI(id) {
     let APIkey = process.env.REACT_APP_APIKEY;
@@ -34,7 +38,6 @@ export default function MovieDetail({ match }) {
     getMovieReviewFromAPI(id);
     getMovieRelatedFromAPI(id);
     getTrailer(id);
-   
   }
   async function getMovieReviewFromAPI(id) {
     let APIkey = process.env.REACT_APP_APIKEY;
@@ -54,18 +57,16 @@ export default function MovieDetail({ match }) {
     let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${APIkey}&language=en-US`;
     let res = await Axios.get(url);
     setTrailer(res.data.results[0]);
-    
   }
 
   function addToFavorite(movie) {
     favorite[1]([...favorite[0], movie]);
-   
   }
 
   function removeFromFavorite(id) {
     let newArray = [...favorite[0]];
     let index = newArray.findIndex((elm) => elm === id);
-   
+
     if (index !== -1) {
       newArray.splice(index, 1);
       favorite[1](newArray);
@@ -74,8 +75,6 @@ export default function MovieDetail({ match }) {
   function closeModal() {
     setModalOpen(false);
   }
-
-  
 
   return (
     <>
@@ -264,7 +263,7 @@ export default function MovieDetail({ match }) {
                           <i class="fas fa-film"></i> Watch Trailer
                         </button>
 
-                        <div className="product-details-action">
+                        {/* <div className="product-details-action">
                           <button className="details-action-icon">
                             {favorite[0].find(
                               (elm) => elm === movieDetails.id
@@ -282,7 +281,7 @@ export default function MovieDetail({ match }) {
                               />
                             )}
                           </button>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -300,7 +299,7 @@ export default function MovieDetail({ match }) {
                 ></i>
                 <div className="trailer">
                   <YouTube
-                    video={trailer.key}
+                    video={trailer?.key}
                     autoplay
                     width="100%"
                     height="100%"
@@ -354,23 +353,29 @@ export default function MovieDetail({ match }) {
                       >
                         <div className="desc-text review-text">
                           <div className="product-commnets">
-                            {movieReview.results.map((review) => {
-                              return (
-                                <div className="product-commnets-list mb-25 pb-15">
-                                  <div className="pro-comments-img">
-                                    <img
-                                      src="img/product/comments/02.png"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <div className="pro-commnets-text">
-                                    <h4>{review.author}</h4>
+                            {movieReview.results.length === 0 ? (
+                              <div>리뷰가 없습니다.</div>
+                            ) : (
+                              movieReview.results.map((review) => {
+                                return <Review review={review}/>
+                  
+                                // return (
+                                //   <div className="product-commnets-list mb-25 pb-15">
+                                //     <div className="pro-comments-img">
+                                //       <img
+                                //         src="img/product/comments/02.png"
+                                //         alt=""
+                                //       />
+                                //     </div>
+                                //     <div className="pro-commnets-text">
+                                //       <h4>{review.author}</h4>
 
-                                    <p>{review.content}</p>
-                                  </div>
-                                </div>
-                              );
-                            })}
+                                //       <p>{review.content}</p>
+                                //     </div>
+                                //   </div>
+                                // );
+                              })
+                            )}
                           </div>
                         </div>
                       </div>
@@ -385,7 +390,8 @@ export default function MovieDetail({ match }) {
                         aria-labelledby="profile-tab6"
                       >
                         <div className="related-movies">
-                          {movieRelated.map((movie) => {
+                         
+                          {movieRelated?.map((movie) => {
                             return (
                               <SingleCardSlider
                                 movie={movie}

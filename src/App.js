@@ -7,7 +7,7 @@ import MovieDetail from "./components/MovieDetail";
 import Movies from "./components/Movies";
 import Footer from "./components/Footer";
 import Favorite from "./components/Favorite";
-
+//https://developers.themoviedb.org/3/discover/movie-discover
 function App() {
   return (
     <Router>
@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/movie/:id" component={MovieDetail}></Route>
           <Route exact path="/movies" component={Movies}></Route>
-          <Route exact path="/favorite" component={Favorite}></Route>
+          {/* <Route exact path="/favorite" component={Favorite}></Route> */}
           <Home></Home>
         </Switch>
       </Fragment>

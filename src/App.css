@@ -1320,4 +1320,22 @@ z-index: 0;
 
     
 }
+.text-box{
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; 
+} 
+.expanded{
+    max-height: none; 
+}
+.fold{
+    max-height: 100px;
+}
+.more-button{
+    background: none;
+    border: none;
+    color: lightgrey;
+    font-weight: bold;
+    text-decoration: underline;
 
+}

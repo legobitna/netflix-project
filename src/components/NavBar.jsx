@@ -25,7 +25,7 @@ export default function NavBar() {
         <Navbar bg="" variant="dark">
           <Navbar.Brand>
             <Link to="/" style={{ color: "white" }}>
-              <img src="/logo.png"></img>
+              <img src="/logo.png"  width={93}/>
             </Link>
           </Navbar.Brand>
           <Nav className="mr-auto">
@@ -39,12 +39,12 @@ export default function NavBar() {
                 Movies
               </Link>
             </Nav.Link>
-            <Nav.Link>
+            {/* <Nav.Link>
               <Link to="/favorite" style={{ color: "white" }}>
                 {" "}
                 My Favorite
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
           <Form inline onSubmit={(e) => searchMovie(e)}>
             <FormControl
