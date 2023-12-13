@@ -28,7 +28,7 @@ export default function SingleCardSlider({ movie }) {
           style={{
             backgroundImage:
               "url(" +
-              `https://image.tmdb.org/t/p/w400//${movie.backdrop_path}` +
+              `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie.backdrop_path}` +
               ")",
           }}
         >
